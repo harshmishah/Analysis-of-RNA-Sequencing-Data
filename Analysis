@@ -1,0 +1,24 @@
+##### Harshmi Shah
+
+## Distil the multidimensional information to dimensions where simple biologists can comprehend it
+
+PCA is a very simple method that rotates your n-dimensional data (for instance expression data across many genes) such that the first dimension contains 
+the largest spread (= variance) of the data, the second dimension contains the second-largest spread of the data, and so on.
+
+1. Does the PCA changes drastically if we perform PCA on the top 500 (in terms of variance) as compared to top 5000 genes?
+-> Its not a very drastic change if we perform PCA on top 500 vs top 5000 genes. For top 500 genes PC1 = 41% & PC2 = 37% whereas for top 5000 gene PC1 = 40% and PCA = 31%.
+
+2. If the answer is yes, then would we consider the system (the cell) to be noisy? If the above answer is no, then what can we say about the system as a whole?
+-> Since there is not a very big and drastic change we can say that experiment is well controlled and has worked well. 
+
+3. What is the overall takeaway from PCA plots and its correlation with metadata?
+-> The samples take at the beginning ie at 0th hours have the lowest variance and the samples taken at the end of a full day have the highest PC1 and lower PC2.
+
+## Remove noise due to experimental conditions
+
+1. Is the batch effect consistent amongst all the donors in the experiment?
+-> No the batch effect isn't very consitent.
+
+2. Does overall biology make sense after removing the batch effect? What has changed after batch effect removal?
+-> Yes. After removing the batch effect, the clusters are more defined. This tells us how the samples behave at particular time intervals.
+
