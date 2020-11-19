@@ -11,10 +11,10 @@ library(edgeR)
 library(rafalib)
 
 #Read Count Data
-countData <- read.csv('/mnt/c/Users/Harshmi/Downloads/ElucidataAssignment/Exp6_Exp3_Counts_Test.csv', header = TRUE, sep = ",")
+countData <- read.csv('Exp6_Exp3_Counts_Test.csv', header = TRUE, sep = ",")
 
 #Read Metadata
-metaData <- read.xlsx('/mnt/c/Users/Harshmi/Downloads/ElucidataAssignment/Exp6_Exp3_Counts_Test_Metadata.xlsx')
+metaData <- read.xlsx('Exp6_Exp3_Counts_Test_Metadata.xlsx')
 
 #Format Data
 coldata = metaData[-1]
@@ -51,12 +51,12 @@ dds <- DESeq(dds)
 vsd <- vst(dds,blind=TRUE)
 
 #Plot PCA Results for top 5000 genes
-jpeg('/mnt/c/Users/Harshmi/Desktop/pca_time_exp_5000.jpg')
+jpeg('pca_time_exp_5000.jpg')
 plotPCA(vsd,intgroup=c("Time","Experiment"),ntop=5000)
 dev.off()
 
 #Plot PCA Results for top 500 genes
-jpeg('/mnt/c/Users/Harshmi/Desktop/pca_time_exp_500.jpg')
+jpeg('pca_time_exp_500.jpg')
 plotPCA(vsd,intgroup=c("Time","Experiment"),ntop=500)
 dev.off()
 
@@ -72,7 +72,7 @@ bigpar()
 dds$Donor.int <- as.integer(dds$Donor) + 15
 dds$Donor.int
 
-jpeg('/mnt/c/Users/Harshmi/Desktop/batch_effect.jpg')
+jpeg('batch_effect.jpg')
 plot(fit$sv[,1:2], col=dds$Experiment, pch=dds$Donor.int, cex=2,
           xlab="SV1", ylab="SV2")
 legend("top", levels(dds$Experiment
@@ -86,11 +86,11 @@ mat <- limma::removeBatchEffect(mat, vsd$Experiment)
 assay(vsd) <- mat
 
 #Re-plotting PCA Results for top 500 genes
-jpeg('/mnt/c/Users/Harshmi/Desktop/pca_time_exp_500_post_batch.jpg')
+jpeg('pca_time_exp_500_post_batch.jpg')
 plotPCA(vsd,intgroup=c("Time","Experiment"),ntop=500)
 dev.off()
 
 #Re-plotting PCA Results for top 5000 genes
-jpeg('/mnt/c/Users/Harshmi/Desktop/pca_time_exp_5000_post_batch.jpg')
+jpeg('pca_time_exp_5000_post_batch.jpg')
 plotPCA(vsd,intgroup=c("Time","Experiment"),ntop=5000)
 dev.off()
