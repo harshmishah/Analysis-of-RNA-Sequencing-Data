@@ -21,4 +21,3 @@ the largest spread (= variance) of the data, the second dimension contains the s
 
 2. Does overall biology make sense after removing the batch effect? What has changed after batch effect removal?
 -> Yes. After removing the batch effect, the clusters are more defined. This tells us how the samples behave at particular time intervals.
-
